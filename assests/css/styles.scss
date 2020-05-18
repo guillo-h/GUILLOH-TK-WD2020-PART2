@@ -1,0 +1,587 @@
+@import 'reset.scss';
+
+// Mixin Media
+@mixin respond-to($media) {
+    @if $media == mobile {
+        @media only screen and (max-width: 991px) { @content; }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width: 992px) { @content; }
+    }
+}
+
+// Colors
+$blue: #19234E;
+.blue_bg {
+    background-color: $blue;
+}
+$lightblue: #003097;
+.lightblue_bg {
+    background-color: $lightblue;
+}
+
+body {
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.col {
+    @include respond-to(mobile) {
+        width: 100%;
+    }
+    @include respond-to(desktop) {
+        width: 50%;
+    }
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+        color: #666;
+    }
+}
+
+header {
+    width: 100%;
+    display: inline-flex;
+    color: white;
+    background-color: $blue;
+    @include respond-to(mobile) {
+        flex-direction: column-reverse;
+    }
+    @include respond-to(desktop) {
+        flex-direction: row;
+    }
+    .logos {
+        @include respond-to(mobile) { 
+            height: 40px;
+            width: 252px;
+            position: absolute;
+            left: calc(50% - 126px);
+            top: 10px;
+        }
+        @include respond-to(desktop) { 
+            height: 50px;
+            margin: 50px 80px;
+        }
+        .sep {
+            width: 1px;
+            background: white;
+            opacity: 0.5;
+            display: inline-block;
+            @include respond-to(mobile) {
+                height: 40px;
+                margin: 0 20px;
+            }
+            @include respond-to(desktop) {
+                height: 50px; 
+                margin: 0 30px;
+            }
+        }
+        img {
+            margin-bottom: 4px;
+            @include respond-to(mobile) {
+                height: 32px;
+            }
+        }
+    }
+    h1 {
+        color: white;
+        @include respond-to(mobile) { 
+            font-size: 36px;
+            line-height: 49px;
+            letter-spacing: -0.4px;
+            margin: 30px 32px;  
+        }
+        @include respond-to(desktop) {
+            font-size: 60px;
+            line-height: 80px;
+            margin: 0 80px;
+            letter-spacing: -0.6px;
+        }
+    }
+    p, ul {
+        font-weight: 500;
+        @include respond-to(mobile) { 
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: -0.2px;
+        }
+        @include respond-to(desktop) {
+            font-size: 20px;
+            line-height: 32px;
+            letter-spacing: -0.4px;
+        } 
+    }
+    p {
+        @include respond-to(mobile) {
+            margin: 30px 32px;  
+        }
+        @include respond-to(desktop) {
+            margin: 55px 80px;
+        }
+    }
+    ul.list-star {
+        @include respond-to(mobile) {
+            margin: 0 32px 50px;
+        }
+        @include respond-to(desktop) {
+            margin: 0 80px;
+        }
+    }
+    ul.list-star li {
+        list-style-image: url('../img/icon_star.svg');
+        background-repeat: no-repeat;
+        margin-bottom: 15px;
+        padding-left: 10px;
+        @include respond-to(mobile) {
+            background-position: 2px 6px;
+            line-height: 28px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+        @include respond-to(desktop) {
+            background-position: 2px 6px;
+            line-height: 32px;
+            margin-left: 25px;
+        }
+    }
+    .image_bg {
+        background-image: url('../img/header.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include respond-to(mobile) {
+            margin-top: 62px;
+            min-height: 270px;
+        }
+        @include respond-to(desktop) {
+            min-height: 840px;
+        }
+    }
+}
+
+section {
+    display: inline-flex;
+    @include respond-to(mobile) {
+        flex-direction: column;
+        margin: 50px 32px 0;
+    }
+    @include respond-to(desktop) {
+        flex-direction: row;
+        margin: 100px 80px 0;
+    }
+    h2 {
+        @include respond-to(mobile) {
+            font-size: 22px;
+            line-height: 27px;
+            margin: 30px 0 20px;
+        }
+        @include respond-to(desktop) {
+            font-size: 26px;
+            line-height: 32px;
+            margin: 0 0 25px 135px;
+        }
+    }
+    p {
+        @include respond-to(mobile) {
+            font-size: 16px;
+            line-height: 30px;
+            margin: 0 0 15px;
+        }
+        @include respond-to(desktop) {
+            font-size: 18px;
+            line-height: 32px;
+            margin: 0 0 20px 135px;
+        }
+    }
+    p.small {
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.3px;
+    }
+    img {
+        width: 100%;
+    }
+}
+
+section.reverse {
+    @include respond-to(desktop) {
+        flex-direction: row-reverse;
+    }
+    h2, p {
+        @include respond-to(desktop) {
+            margin-left: 0;
+            padding-right: 135px;
+        }
+    }
+}
+
+section.numbers {
+    width: 100%;
+    @include respond-to(mobile) {
+        flex-direction: column;
+        margin: 50px 0 0;
+    }
+    @include respond-to(desktop) {
+        flex-direction: row;
+        margin: 100px 0 0;
+    }
+    .col {
+        text-align: center;;
+        @include respond-to(mobile) {
+            width: 100%;
+        }
+        @include respond-to(desktop) {
+            width: 33.33%;
+        }
+    }
+    h2 {
+        color: $blue;
+        @include respond-to(mobile) {
+            margin: 20px 0 10px;
+        }
+        @include respond-to(desktop) {
+            margin: 30px 0 15px;
+        }
+    }
+    p {
+        margin: 0;
+        color: $lightblue;
+        @include respond-to(mobile) {
+            min-height: 80px;
+            padding: 5px 30px;
+            line-height: 24px;
+        }
+        @include respond-to(desktop) {
+            min-height: 120px;
+            padding: 10px 50px;
+        }
+    }
+}
+
+section.slider {
+    width: 100%;
+    position: relative;
+    @include respond-to(mobile) {
+        margin: 50px 0 0 0;
+    }
+    @include respond-to(desktop) {
+        margin: 100px 0 0 0;
+    }
+    .slides {
+        display: none;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-image: url('../img/slider_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include respond-to(mobile) {
+            min-height: 220px;
+        }
+        @include respond-to(desktop) {
+            min-height: 740px;
+        }
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        background-color: white;
+        transition: 0.5s ease-in-out;
+        border-radius: 50%;
+        user-select: none;
+        @include respond-to(mobile) {
+            top: calc(50% - 15px);
+            width: 30px;
+            height: 30px;
+        }
+        @include respond-to(desktop) {
+            top: calc(50% - 25px);
+            width: 50px;
+            height: 50px;
+        }
+        &:hover {
+            background-color: rgba(255,255,255,.5);
+        }
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            display: inline-block;
+            @include respond-to(mobile) {
+                background-image: url('../img/icon_arrow_slider_sm.svg');
+                background-position: 10px 50%;
+            }
+            @include respond-to(desktop) {
+                background-image: url('../img/icon_arrow_slider_lg.svg');
+                background-position: 18px 50%;
+            }
+        }
+    }
+    .prev {
+        @include respond-to(mobile) {
+            left: 10px;
+        }
+        @include respond-to(desktop) {
+            left: 20px;
+        }
+    }
+    .next {
+        @include respond-to(mobile) {
+            right: 10px;
+        }
+        @include respond-to(desktop) {
+            right: 20px;
+        }
+        &:after {
+            transform: rotate(180deg);
+        }
+    }
+    .dots {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        left: 0;
+        @include respond-to(mobile) {
+            bottom: 15px;
+        }
+        @include respond-to(desktop) {
+            bottom: 30px;
+        }
+        .dot {
+            cursor: pointer;
+            background-color: white;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color .5s ease-in-out;
+            @include respond-to(mobile) {
+                height: 8px;
+                width: 8px;
+                margin: 0 6px;
+            }
+            @include respond-to(desktop) {
+                height: 10px;
+                width: 10px;
+                margin: 0 7px;
+            }
+            &:hover {
+                background-color: #ABD8FF;
+            }
+        }
+        .dot.active {
+            background-color: #ABD8FF;
+        }
+    }
+    
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+}
+
+section.color {
+    margin: -3px 0 0 0;
+    width: 100%;
+    color: white;
+    img {
+        width: auto;
+        @include respond-to(mobile) {
+            margin: 40px 35px;
+        }
+        @include respond-to(desktop) {
+            margin: 80px;
+        }
+    }
+    ul.list-oval {
+        @include respond-to(mobile) {
+            margin: 0 32px 50px;
+        }
+        @include respond-to(desktop) {
+            margin: 0 80px 100px;
+        }
+    }
+    ul.list-oval li {
+        background-image: url('../img/icon_oval.svg');
+        background-repeat: no-repeat;
+        @include respond-to(mobile) {
+            background-position: 2px 10px; 
+            padding-left: 25px;
+            font-size: 18px;
+            line-height: 30px;
+            letter-spacing: -0.3px;
+            margin-bottom: 20px;
+        }
+        @include respond-to(desktop) {
+            background-position: 2px 14px;
+            padding-left: 30px;
+            font-size: 22px;
+            line-height: 36px;
+            letter-spacing: -0.4px;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    background: #E6E6E6;
+    @include respond-to(mobile) {
+        flex-direction: column;
+        padding: 25px 0;
+    }
+    @include respond-to(desktop) {
+        width: calc(100% - 160px);
+        flex-direction: row;
+        padding: 60px 80px;
+    }
+    .col-1 {
+        @include respond-to(mobile) {
+            width: 100%;
+        }
+        @include respond-to(desktop) {
+            width: 26%;
+            margin-right: 4%;
+        }
+    }
+    h2 {
+        color: black;
+        font-size: 30px;
+        line-height: 153%;
+        letter-spacing: -0.3px;
+        @include respond-to(mobile) {
+            margin-left: 32px;
+        }
+    }
+    .logos {
+        height: 40px;
+        @include respond-to(mobile) {
+            margin: 32px 32px 42px;
+        }
+        @include respond-to(desktop) {
+            margin: 38px 0;
+        }
+        .sep {
+            width: 1px;
+            background: #A2A2A2;
+            opacity: 0.5;
+            display: inline-block;
+            height: 40px;
+            margin: 0 20px;
+        }
+        img {
+            margin-bottom: 4px;
+        }
+    }
+    .col-2 {
+        @include respond-to(mobile) {
+            width: 100%;
+        }
+        @include respond-to(desktop) {
+            width: 16%;
+            margin-right: 2%;
+        }
+        h3 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 157%;
+            letter-spacing: 0.35px;
+            color: black;
+            @include respond-to(mobile) {
+                width: calc(100% - 64px);
+                cursor: pointer;
+                border-top: 1px solid rgba(162,162,162,.5);               
+                padding: 15px 32px;
+                &:after {
+                    content: '';
+                    width: 14px;
+                    height: 7px;
+                    background-image: url('../img/icon_arrow.svg');
+                    background-repeat: no-repeat;
+                    float: right;
+                    margin-top: 8px;
+                    transition: transform .3s ease-in-out;
+                }
+                &:hover {
+                    background-color: #E0E0E0;
+                    color: #666;
+                }
+            }
+            @include respond-to(desktop) {
+                margin-bottom: 20px;
+            }
+        }
+        h3.active {
+            @include respond-to(mobile) {
+                background-color: #E0E0E0;
+                color: #666;
+                &:after {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        h3.active + ul {
+            @include respond-to(mobile) {
+                height: auto;
+                padding-bottom: 5px;
+            }
+        }
+        ul { 
+            @include respond-to(mobile) {
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 32px;
+                background-color: #E0E0E0;
+                transition: max-height .3s ease-in-out;
+            }
+        }
+        li {
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.35px;
+            margin-bottom: 18px;
+        }
+        h3.active ul {
+            @include respond-to(mobile) {
+                height: auto;
+                overflow: hidden;
+            }
+        }
+    }
+    .col-2.last {
+        @include respond-to(desktop) {
+            margin-right: 0;
+        }
+        ul {
+            @include respond-to(mobile) {
+                border-bottom: 1px solid rgba(162,162,162,.5);
+            }
+        }
+    }
+    .copy {
+        width: 100%;
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0.3px;
+        margin-top: 20px;
+        p {
+            @include respond-to(mobile) {
+                max-width: 220px;
+                padding: 6px 32px;
+            }
+        }
+    }
+}
